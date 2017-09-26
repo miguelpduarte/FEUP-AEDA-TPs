@@ -7,9 +7,9 @@
 
  void test_1a_AbrirParque() {
 	ParqueEstacionamento p1(4, 6);
-	// Testa se o parque foi aberto com a lotaÁ„o indicada
+	// Testa se o parque foi aberto com a lota√ß√£o indicada
 	ASSERT_EQUAL(4, p1.getNumLugares());
-	// Testa se o parque foi aberto com o n˙mero m·ximo de clientes indicado
+	// Testa se o parque foi aberto com o n√∫mero m√°ximo de clientes indicado
 	ASSERT_EQUAL(6, p1.getNumMaximoClientes());
 }
 
@@ -22,11 +22,11 @@ void test_1b_AdicionarCliente() {
 	p1.adicionaCliente("Rui");
 	p1.adicionaCliente("Maria");
 	p1.adicionaCliente("Clara");
-	// Testa se recusa novo cliente quando numero m·ximo de clientes foi atingido
+	// Testa se recusa novo cliente quando numero m√°ximo de clientes foi atingido
 	ASSERT_EQUAL(false, p1.adicionaCliente("Paula"));
-	// Testa se retorna a posiÁ„o correcta do cliente
+	// Testa se retorna a posi√ß√£o correcta do cliente
 	ASSERT_EQUAL(1, p1.posicaoCliente("Antonio"));
-	// Testa se retorna -1 caso o cliente n„o exista
+	// Testa se retorna -1 caso o cliente n√£o exista
 	ASSERT_EQUAL(-1, p1.posicaoCliente("Joana"));
 }
 
@@ -39,13 +39,13 @@ void test_1c_EntrarParque() {
 	p1.adicionaCliente("Rui");
 	// Testa se deixa entrar no parque um cliente existente
 	ASSERT_EQUAL(true, p1.entrar("Maria"));
-	// Testa se n„o deixa entrar no parque um cliente que n„o existe
+	// Testa se n√£o deixa entrar no parque um cliente que n√£o existe
 	ASSERT_EQUAL(false, p1.entrar("Paula"));
-	// Testa se n„o dexia entrar em cliente que j· l· est·
+	// Testa se n√£o dexia entrar em cliente que j√° l√° est√°
 	ASSERT_EQUAL(false, p1.entrar("Maria"));
 	p1.entrar("Joao");
 	p1.entrar("Antonio");
-	// Testa se n„o deixa entrar quando a lotaÁ„o est· completa
+	// Testa se n√£o deixa entrar quando a lota√ß√£o est√° completa
 	ASSERT_EQUAL(false, p1.entrar("Rui"));
 }
 
@@ -56,9 +56,9 @@ void test_1d_RetirarCliente() {
 	p1.adicionaCliente("Maria");
 	p1.adicionaCliente("Antonio");
 	p1.entrar("Maria");
-	// Testa se n„o deixa remover cliente que est· dentro do parque
+	// Testa se n√£o deixa remover cliente que est√° dentro do parque
 	ASSERT_EQUAL(false, p1.retiraCliente("Maria"));
-	// Testa se deixa remover cliente que est· fora do parque
+	// Testa se deixa remover cliente que est√° fora do parque
 	ASSERT_EQUAL(true, p1.retiraCliente("Antonio"));
 	// Testa se nao deixa remover cliente que nao existe
 	ASSERT_EQUAL(false, p1.retiraCliente("Ana"));
@@ -75,9 +75,9 @@ void test_1e_SairParque() {
 	p1.entrar("Rui");
 	// Testa se um cliente estacionado no parque, sai.
 	ASSERT_EQUAL(true, p1.sair("Maria"));
-	// Testa se n„o deixa sair um cliente que n„o est· estacionado.
+	// Testa se n√£o deixa sair um cliente que n√£o est√° estacionado.
 	ASSERT_EQUAL(false, p1.sair("Maria"));
-	// Testa se n„o deixa sair um cliente que n„o existe.
+	// Testa se n√£o deixa sair um cliente que n√£o existe.
 	ASSERT_EQUAL(false, p1.sair("Antonio"));
 }
 
@@ -89,11 +89,11 @@ void test_1f_LugaresLotacaoParque() {
 	p1.adicionaCliente("Antonio");
 	p1.entrar("Maria");
 	p1.entrar("Antonio");
-	// Testa se Lotacao do parque est· correcta
+	// Testa se Lotacao do parque est√° correcta
 	ASSERT_EQUAL(3, p1.getNumLugares());
-	// Testa se o numero de viaturas presentes no parque est· correcto
+	// Testa se o numero de viaturas presentes no parque est√° correcto
 	ASSERT_EQUAL(2, p1.getNumLugaresOcupados());
-	// Testa se o o n˙mero de clientes registados no parque est· correcto
+	// Testa se o o n√∫mero de clientes registados no parque est√° correcto
 	ASSERT_EQUAL(3, p1.getNumClientesAtuais());
 }
 
@@ -109,7 +109,7 @@ void test_1g_OperadorSoma() {
 	p2.adicionaCliente("Vasco");
 
 	p1 += p2;
-	// Testa se o o n˙mero de clientes registados no parque est· correcto
+	// Testa se o o n√∫mero de clientes registados no parque est√° correcto
 	ASSERT_EQUAL(6, p1.getNumClientesAtuais());
 
 	ParqueEstacionamento p3(10, 18);
@@ -118,10 +118,10 @@ void test_1g_OperadorSoma() {
 	p3.adicionaCliente("Carlos");
 
 	p1 += p3;
-	// Testa se o o n˙mero de clientes registados no parque est· correcto
+	// Testa se o o n√∫mero de clientes registados no parque est√° correcto
 	ASSERT_EQUAL(8, p1.getNumClientesAtuais());
 
-	// Testa se retorna a posiÁ„o correcta do cliente
+	// Testa se retorna a posi√ß√£o correcta do cliente
 	ASSERT_EQUAL(4, p1.posicaoCliente("Rita"));
 	ASSERT_EQUAL(-1, p1.posicaoCliente("Carlos"));
 }
