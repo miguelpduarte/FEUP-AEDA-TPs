@@ -15,3 +15,7 @@ This repository, and every other `FEUP-COURSE*` repos on GitHub correspond to sc
 
 ### Notes:
 The file layout is due to me using a gitignore directly on my IDE file structure to create this repo (lazyness, I know), but it should be fine.
+
+The generateTPProject bash script is a script I use to generate my projects, see [this repo for more info.](https://github.com/Meiogordo/CUTE-CLion-AEDATPTemplate)
+
+I will also gladly accept any suggestions made in terms of improving the solutions presented here, as they are simply the solutions I come up with during/after the classes. I suggest that those suggestions (heh) be done through pull requests. Given enough justification I will happily accept them :)
