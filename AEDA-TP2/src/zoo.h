@@ -35,6 +35,10 @@ public:
 	virtual string getInformacao() const;  // informacao sobre nome animal, idade animal, nome do veterinario
 	virtual bool eJovem() const = 0;
 	static int getMaisJovem();
+	//Not requested but helpful:
+	void setVet(Veterinario *v);
+	const Veterinario * getVet() const;
+	int getIdade() const;
 };
 
 
@@ -79,11 +83,14 @@ public:
 	int numVeterinarios() const;
 	void adicionaAnimal(Animal *a1);
 	string getInformacao() const;
-	int encontrarAnimalporNome(string nome) const;
 	bool animalJovem(string nomeA);
 	void alocaVeterinarios(istream &isV);
 	bool removeVeterinario(string nomeV);
 	bool operator < (Zoo& zoo2) const;
+	//Not requested but helpful:
+	int encontrarAnimalporNome(string nome) const;
+	int encontrarVetporNome(string nome) const;
+	long int getZooAnimalAgeSum() const;
 };
 
 

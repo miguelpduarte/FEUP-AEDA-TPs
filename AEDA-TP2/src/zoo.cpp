@@ -17,10 +17,22 @@ int Animal::getMaisJovem(){
 }
 
 string Animal::getInformacao() const{
-	/*if(vet != nullptr)
-		return "tem vet";*/
+	if(vet != nullptr)
+		return this->nome + ", " + to_string(this->idade) + ", " + this->vet->getInformacao();
 
-	return this->nome + ", " + to_string(this->idade);;
+	return this->nome + ", " + to_string(this->idade);
+}
+
+void Animal::setVet(Veterinario *v){
+	this->vet = v;
+}
+
+const Veterinario *Animal::getVet() const{
+	return vet;
+}
+
+int Animal::getIdade() const{
+	return this->idade;
 }
 
 
@@ -83,8 +95,8 @@ void Zoo::alocaVeterinarios(istream &isV){
 			name = temp;
 		else {
 			codOrdem_s = temp;
-			Veterinario tempVet(name, stoi(codOrdem_s));
-			veterinarios.push_back(&tempVet);
+			Veterinario* tempVet = new Veterinario(name, stoi(codOrdem_s));
+			veterinarios.push_back(tempVet);
 		}
 
 		isName = !isName;
@@ -95,9 +107,53 @@ void Zoo::alocaVeterinarios(istream &isV){
 	int numVeterinarios = veterinarios.size();
 
 	for(unsigned int i = 0; i < animais.size(); ++i){
-		//.at(i % numVeterinarios)
+		//assings the animal at i with the vet at i mod nVets, thus allowing for uniform distribution
+		animais.at(i)->setVet(veterinarios.at(i % numVeterinarios));
 	}
 
+}
+
+bool Zoo::removeVeterinario(string nomeV){
+	int pos = encontrarVetporNome(nomeV);
+	if(pos == -1)
+		return false;
+
+	//The position to reassign the animals' vets to
+	int reassignpos = pos + 1;
+
+	//The vet to remove was the last one of the vector so we wrap around and reassign to the first one
+	if(pos == veterinarios.size() - 1)
+		reassignpos = 0;
+
+	for(auto const &animal : animais){
+		//If the vet is the one that is beign removed, reassign
+		if(animal->getVet()->getNome() == nomeV)
+			animal->setVet(veterinarios.at(reassignpos));
+	}
+
+	//At last, remove the vet
+	veterinarios.erase(veterinarios.begin() + pos);
+	return true;
+}
+
+int Zoo::encontrarVetporNome(string nome) const{
+	for(unsigned int i = 0; i < veterinarios.size(); ++i)
+		if(veterinarios.at(i)->getNome() == nome)
+			return i;
+
+	return -1;
+}
+
+bool Zoo::operator<(Zoo &zoo2) const{
+	return this->getZooAnimalAgeSum() < zoo2.getZooAnimalAgeSum();
+}
+
+long int Zoo::getZooAnimalAgeSum() const{
+	long int ageSum = 0;
+
+	for(auto const &animal : animais){
+		ageSum += animal->getIdade();
+	}
 }
 
 Cao::Cao(string nome, int idade, string raca) : Animal(nome, idade), raca(raca) {}
