@@ -132,6 +132,11 @@ bool Zoo::removeVeterinario(string nomeV){
 	}
 
 	//At last, remove the vet
+
+	//Big note: Don't forget to free the memory previously allocated, I know I did (thanks Acácio for the correction)
+	delete veterinarios.at(pos);
+
+	//Removing the position from the vector
 	veterinarios.erase(veterinarios.begin() + pos);
 	return true;
 }
