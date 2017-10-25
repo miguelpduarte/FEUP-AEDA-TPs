@@ -1,0 +1,7 @@
+a)
+Este excerto de código efetua a impressão de uma matriz.
+A complexidade deste excerto de código é O(n³), se considerarmos largura, altura e ntabs como n.
+
+b)
+Este excerto de código é uma implementação de pesquisa binária.
+A complexidade deste excerto de código é O(log(n)).
