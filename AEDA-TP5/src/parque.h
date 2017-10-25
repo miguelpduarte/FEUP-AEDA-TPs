@@ -14,6 +14,8 @@ public:
 	int frequencia;
 	bool operator == (const InfoCartao &ic1) const;
 	bool operator < (const InfoCartao &ic1) const;
+	//Aditional operator for use of coding << for ParqueEstacionamento
+	friend ostream & operator<<(ostream &os, const InfoCartao &ic);
 };
 
 class ParqueEstacionamento {
@@ -49,5 +51,12 @@ public:
 	string getNome() const;
 };
 
+class PosicaoNaoExistente{
+private:
+	int pos;
+public:
+	PosicaoNaoExistente(const int &pos);
+	int getValor() const;
+};
 
 #endif /*PARQUE_H_*/

@@ -2,6 +2,7 @@
 #include "insertionSort.h"
 #include "sequentialSearch.h"
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -94,6 +95,13 @@ bool InfoCartao::operator<(const InfoCartao &ic1) const{
 
 	return this->frequencia > ic1.frequencia;
 }
+
+ostream &operator<<(ostream &os, const InfoCartao &ic){
+	os << ic.nome << ", " << (ic.presente ? "presente, " : "não presente, ")
+	   << "usou o parque " << ic.frequencia << " vezes.";
+
+	return os;
+}
 //End of InfoCartao methods
 
 
@@ -109,9 +117,55 @@ void ParqueEstacionamento::ordenaClientesPorFrequencia(){
 	insertionSort(clientes);
 }
 
+vector<string> ParqueEstacionamento::clientesGamaUso(int n1, int n2){
+	ordenaClientesPorFrequencia();
+
+	vector<string> output;
+
+	//Iterating from most frequency to least frequency and selecting the elements with frequency >=n1 and <=n2
+	for(auto const &cliente : clientes){
+		if(cliente.frequencia > n2 || cliente.frequencia < n1) {
+			break;
+		} else {
+			output.emplace_back(cliente.nome);
+		}
+	}
+
+	return output;
+}
+
+//Function to help sort InfoCartao(s) by their names
+bool infoCartaoNameSort(const InfoCartao &ic1, const InfoCartao &ic2){
+	return ic1.nome < ic2.nome;
+}
+
+void ParqueEstacionamento::ordenaClientesPorNome(){
+	sort(clientes.begin(), clientes.end(), infoCartaoNameSort);
+}
+
+InfoCartao ParqueEstacionamento::getClienteAtPos(vector<InfoCartao>::size_type p) const{
+	if(p < 0 || p > clientes.size())
+		throw PosicaoNaoExistente(p);
+	else
+		return clientes[p];
+}
+
+ostream &operator<<(ostream &os, const ParqueEstacionamento &pe){
+	for(auto const &cliente : pe.clientes){
+		os << cliente << endl;
+	}
+
+	return os;
+}
+
 //ClienteNaoExistente "exception class"
 ClienteNaoExistente::ClienteNaoExistente(const string &nome) : nome(nome){}
 
 string ClienteNaoExistente::getNome() const{
 	return this->nome;
 }
+
+//PosicaoNaoExistente "exception class"
+PosicaoNaoExistente::PosicaoNaoExistente(const int &pos) : pos(pos) {}
+
+int PosicaoNaoExistente::getValor() const{return pos;}

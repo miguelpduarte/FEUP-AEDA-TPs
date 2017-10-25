@@ -85,7 +85,7 @@ void test_c_OrdenaFrequencia() {
 }
 
 void test_d_GamasUso() {
-	/*ParqueEstacionamento p1(10,20);
+	ParqueEstacionamento p1(10,20);
 	p1.adicionaCliente("Joao Santos");
 	p1.adicionaCliente("Pedro Morais");
 	p1.adicionaCliente("Rui Silva");
@@ -113,12 +113,12 @@ void test_d_GamasUso() {
 	ASSERT_EQUAL(3,clientes.size());
 	ASSERT_EQUAL("Rui Silva", clientes[0]);
 	ASSERT_EQUAL("Maria Tavares", clientes[1]);
-	ASSERT_EQUAL("Susana Costa", clientes[2]);*/
+	ASSERT_EQUAL("Susana Costa", clientes[2]);
 }
 
 
 void test_e_OrdenaNome() {
-/*	ParqueEstacionamento p1(10,20);
+	ParqueEstacionamento p1(10,20);
 	p1.adicionaCliente("Joao Santos");
 	p1.adicionaCliente("Pedro Morais");
 	p1.adicionaCliente("Rui Silva");
@@ -141,11 +141,11 @@ void test_e_OrdenaNome() {
 	InfoCartao ic1=p1.getClientes()[2];
 	ASSERT_EQUAL("Pedro Morais", ic1.nome);
 	InfoCartao ic2=p1.getClientes()[0];
-	ASSERT_EQUAL("Joao Santos", ic2.nome);*/
+	ASSERT_EQUAL("Joao Santos", ic2.nome);
 }
 
 void test_f_InfoClientes() {
-	/*ParqueEstacionamento p1(10,20);
+	ParqueEstacionamento p1(10,20);
 	p1.adicionaCliente("Joao Santos");
 	p1.adicionaCliente("Pedro Morais");
 	p1.adicionaCliente("Rui Silva");
@@ -156,7 +156,7 @@ void test_f_InfoClientes() {
 	p1.sair("Susana Costa");
 	p1.entrar("Rui Silva");
 	p1.entrar("Susana Costa");
-	ASSERTM("Este teste nunca falha! VERIFICAR informa��o escrita no monitor", true);
+	ASSERTM("Este teste nunca falha! VERIFICAR informação escrita no monitor", true);
 	cout << p1;
 	InfoCartao ic=p1.getClienteAtPos(2);
 	ASSERT_EQUAL("Rui Silva", ic.nome);
@@ -166,9 +166,9 @@ void test_f_InfoClientes() {
 	}
 	catch (PosicaoNaoExistente &e) {
 		ASSERTM("Este teste nunca falha. Verifique no monitor a informacao", true);
-		cout << "Apanhou excecao. Posicao nao existente:" << e.getValor() << endl;
+		cout << "Apanhou excecao. Posicao nao existente: " << e.getValor() << endl;
 		ASSERT_EQUAL(6, e.getValor());
-	}*/
+	}
 }
 
 
