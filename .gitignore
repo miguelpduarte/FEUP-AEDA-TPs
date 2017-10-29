@@ -1,3 +1,10 @@
+#For the folders inside a main folder (for organization, like Testes/AEDA-Teste1617)
+*/*/cute_lib/
+*/*/cmake-build-debug
+*/*/CMakeLists.txt
+*/*/.idea
+
+#For the folders outside a main folder, just in case
 */cute_lib/
 */cmake-build-debug
 */CMakeLists.txt
