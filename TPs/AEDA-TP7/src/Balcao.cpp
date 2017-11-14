@@ -7,7 +7,7 @@ using namespace std;
 
 Cliente::Cliente() {
 	//Generates random number between 1 and 5
-	numPresentes = rand() * 5 + 1;
+	numPresentes = rand() % 5 + 1;
 }
 
 
@@ -17,7 +17,7 @@ int Cliente::getNumPresentes() const {
 
 
 Balcao::Balcao(int te)
-		: tempo_embrulho(te), tempo_atual(0), prox_chegada(rand()*20+1), prox_saida(0) {}
+		: tempo_embrulho(te), tempo_atual(0), prox_chegada(rand()%20+1), prox_saida(0) {}
 
 
 void Balcao:: proximoEvento() {
@@ -34,7 +34,7 @@ void Balcao::chegada() {
 		prox_saida = tempo_atual + c.getNumPresentes()*tempo_embrulho;
 	}
 
-	prox_chegada = rand() * 20 + 1;
+	prox_chegada = rand() % 20 + 1;
 
 	clientes.push(c);
 
@@ -43,7 +43,18 @@ void Balcao::chegada() {
 
 
 void Balcao::saida() {
-	// a alterar
+	//Get the client that will be removed from the queue
+	auto proxCliente = getProxCliente();
+
+	//Remove the Cliente
+	clientes.pop();
+
+	//Update prox_saida
+	prox_saida = tempo_atual + proxCliente.getNumPresentes()*tempo_embrulho;
+
+	//Writing info
+	//(There is no format for this one so I kinda made it up)
+	cout << "tempo= " << tempo_atual << endl << "saiu cliente com " << proxCliente.getNumPresentes() << " presentes";
 }
 
 
